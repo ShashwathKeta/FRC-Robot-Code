@@ -10,7 +10,7 @@ public class RobotConfig
     private HashMap<String,Integer> robot = new HashMap<String,Integer>();
 
     //Config file should be found using relative path, not full path
-    private File file = new File("D:\\Work\\FRC Code\\Java\\FRCJavaCode\\src\\config\\RobotConfig.cfg");
+    private File file = new File("D:\\Work\\FRC Code\\Java\\FRCJavaCode\\config\\RobotConfig.cfg");
 
     public RobotConfig()
     {
