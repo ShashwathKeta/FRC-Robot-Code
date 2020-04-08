@@ -45,62 +45,62 @@ public class RobotConfig
 
     public void setLeftMotor(int i)
     {
-        robot.replace("m_leftMotor", i);
+        robot.replace("M_LEFTMOTOR", i);
     }
     
     public void setRightMotor(int i)
     {
-        robot.replace("m_rightMotor", i);
+        robot.replace("M_RIGHTMOTOR", i);
     }
 
     public void setIntakeMotor(int i)
     {
-        robot.replace("m_intakeMotor", i);
+        robot.replace("M_INTAKEMOTOR", i);
     }
 
     public void setIntakeRotationMotor(int i)
     {
-        robot.replace("m_intakeRotationMotor", i);
+        robot.replace("M_INTAKEROTATIONMOTOR", i);
     }
 
     public void setShooterMotor(int i)
     {
-        robot.replace("m_ShooterMotor", i);
+        robot.replace("M_SHOOTERMOTOR", i);
     }
 
     public void setHoodMotor(int i)
     {
-        robot.replace("m_hoodMotor", i);
+        robot.replace("M_HOODMOTOR", i);
     }
 
     public void setTransferMotor(int i)
     {
-        robot.replace("m_transferMotor", i);
+        robot.replace("M_TRANSFERMOTOR", i);
     }
 
     public void setFunnel(int i)
     {
-        robot.replace("m_funnel", i);
+        robot.replace("M_FUNNEL", i);
     }
 
     public void setClimbMotor(int i)
     {
-        robot.replace("m_ClimbMotor", i);
+        robot.replace("M_CLIMBMOTOR", i);
     }
 
     public void setFrontBeamBreak(int i)
     {
-        robot.replace("beamBreakFront", i);
+        robot.replace("BEAMBREAKFRONT", i);
     }
 
     public void setBackBeamBreak(int i)
     {
-        robot.replace("beamBreakBack", i);
+        robot.replace("BEAMBREAKBACK", i);
     }
 
     public void setLatch(int i)
     {
-        robot.replace("s_Latch", i);
+        robot.replace("S_LATCH", i);
     }
 
     public int getLeftMotor()
