@@ -16,7 +16,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.DigitalOutput;
-import edu.wpi.first.wpilibj.DigitalInput;;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,11 +34,16 @@ public class Robot extends TimedRobot {
 
    //Make this a singleton class
   private final RobotConfig config = new RobotConfig();
-  private final PWMSparkMax m_leftMotor = new PWMSparkMax(config.getLeftMotor());
-  private final PWMSparkMax m_rightMotor = new PWMSparkMax(config.getRighMotor());
+  private final PWMSparkMax m_leftMotor1 = new PWMSparkMax(config.getLeftMotor1());
+  private final PWMSparkMax m_leftMotor2 = new PWMSparkMax(config.getLeftMotor2());
+  private final PWMSparkMax m_leftMotor3 = new PWMSparkMax(config.getLeftMotor3());
+  private final PWMSparkMax m_rightMotor1 = new PWMSparkMax(config.getRightMotor1());
+  private final PWMSparkMax m_rightMotor2 = new PWMSparkMax(config.getRightMotor2());
+  private final PWMSparkMax m_rightMotor3 = new PWMSparkMax(config.getRightMotor3());
   private final PWMSparkMax m_intakeMotor = new PWMSparkMax(config.getIntakeMotor());
   private final PWMSparkMax m_intakeRotationMotor = new PWMSparkMax(config.getIntakeRotationMotor());
-  private final PWMSparkMax m_ShooterMotor = new PWMSparkMax(config.getShooterMotor());
+  private final PWMSparkMax m_ShooterMotor1 = new PWMSparkMax(config.getShooterMotor1());
+  private final PWMSparkMax m_ShooterMotor2 = new PWMSparkMax(config.getShooterMotor2());
   private final PWMSparkMax m_hoodMotor = new PWMSparkMax(config.getHoodMotor());
   private final PWMSparkMax m_transferMotor = new PWMSparkMax(config.getTransferMotor());
   private final PWMTalonSRX m_funnel = new PWMTalonSRX(config.getFunnel());
@@ -47,7 +53,10 @@ public class Robot extends TimedRobot {
   private final DigitalOutput s_Latch = new DigitalOutput(config.getLatch());
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-  private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
+  private final SpeedControllerGroup m_ShooterMotor = new SpeedControllerGroup(m_ShooterMotor1, m_ShooterMotor2);
+  private final SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(m_leftMotor1, m_leftMotor2, m_leftMotor3);
+  private final SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(m_rightMotor1, m_rightMotor2, m_rightMotor3);
+  private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotors, m_rightMotors);
   private final XboxController m_driverController = new XboxController(0);
   private final Shooter m_Shooter = new Shooter();
   private final Climb m_Climb = new Climb();
@@ -57,8 +66,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() 
-  {
-    
+  {  
   }
 
   @Override
@@ -74,17 +82,16 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() 
   {
-
   }
 
   @Override
   public void autonomousPeriodic() 
   {
-
   }
 
   @Override
-  public void teleopInit() {
+  public void teleopInit() 
+  {
     m_intakeRotationMotor.setPosition(0);
     m_intakeMotor.setSpeed(0);
     m_Shooter.shooterConfig(-1, m_ShooterMotor, m_hoodMotor);
@@ -92,7 +99,8 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {
+  public void teleopPeriodic() 
+  {
     m_Shooter.periodicSpeed(shooterConfig, m_ShooterMotor, m_hoodMotor);
     m_robotDrive.arcadeDrive(m_driverController.getY(Hand.kLeft), m_driverController.getX(Hand.kRight));
 
@@ -252,13 +260,11 @@ public class Robot extends TimedRobot {
   @Override
   public void testInit() 
   {
-
   }
 
   @Override
   public void testPeriodic() 
   {
-
   }
 
 }

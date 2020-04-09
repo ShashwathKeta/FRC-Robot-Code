@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.PWMSparkMax;
 //import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import java.util.*;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class Shooter {
 
@@ -44,7 +45,7 @@ public class Shooter {
         m_transferMotor.setSpeed(0);
     }
 
-    public void shooterConfig(int config, PWMSparkMax m_ShooterMotor, PWMSparkMax m_hoodMotor)
+    public void shooterConfig(int config, SpeedControllerGroup m_ShooterMotor, PWMSparkMax m_hoodMotor)
     {
         if(config==0)
         {
@@ -84,13 +85,13 @@ public class Shooter {
         }
     }
 
-    public void setShooterSpeed(int speed, PWMSparkMax m_ShooterMotor)
+    public void setShooterSpeed(int speed, SpeedControllerGroup m_ShooterMotor)
     {
         int power = speed/3784;
         m_ShooterMotor.set(power);
     }
 
-    public void periodicSpeed(int config, PWMSparkMax m_ShooterMotor, PWMSparkMax m_hoodMotor)
+    public void periodicSpeed(int config, SpeedControllerGroup m_ShooterMotor, PWMSparkMax m_hoodMotor)
     {
         if(config==0)
         {
