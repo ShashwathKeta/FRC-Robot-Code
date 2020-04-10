@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.PWMSparkMax;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import java.util.*;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.networktables.*;
 
 public class Shooter {
 
@@ -118,5 +119,27 @@ public class Shooter {
             setShooterSpeed(0, m_ShooterMotor);
             m_hoodMotor.setPosition(0);
         }
+    }
+
+    public boolean autoalign(PWMSparkMax m_turretmotor)
+    {
+        //double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+        double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+        //double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+        //double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
+
+        if(tx>1)
+        {
+            m_turretmotor.set(-.6);
+            return false;
+        }
+        else if(tx<1)
+        {
+            m_turretmotor.set(.6);
+            return false;
+        }
+
+        m_turretmotor.set(0);
+        return true;
     }
 }

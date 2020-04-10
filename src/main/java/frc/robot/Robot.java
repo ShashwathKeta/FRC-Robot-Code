@@ -48,6 +48,7 @@ public class Robot extends TimedRobot {
   private final PWMSparkMax m_transferMotor = new PWMSparkMax(config.getTransferMotor());
   private final PWMTalonSRX m_funnel = new PWMTalonSRX(config.getFunnel());
   private final PWMSparkMax m_ClimbMotor = new PWMSparkMax(config.getClimbMotor());
+  private final PWMSparkMax m_turretMotor = new PWMSparkMax(config.getTurretMotor());
   private final DigitalInput beamBreakFront = new DigitalInput(config.getFrontBeamBreak());
   private final DigitalInput beamBreakBack = new DigitalInput(config.getBackBeamBreak());
   private final DigitalOutput s_Latch = new DigitalOutput(config.getLatch());
@@ -103,6 +104,7 @@ public class Robot extends TimedRobot {
   {
     m_Shooter.periodicSpeed(shooterConfig, m_ShooterMotor, m_hoodMotor);
     m_robotDrive.arcadeDrive(m_driverController.getY(Hand.kLeft), m_driverController.getX(Hand.kRight));
+    m_Shooter.autoalign(m_turretMotor);
 
     if(m_driverController.getXButtonPressed())
     {
@@ -127,7 +129,10 @@ public class Robot extends TimedRobot {
 
     if(m_driverController.getBackButtonPressed())
     {
-      m_Shooter.fire(m_transferMotor);
+      if(m_Shooter.autoalign(m_turretMotor))
+      {
+        m_Shooter.fire(m_transferMotor);
+      }
     }
 
     if(m_driverController.getBButtonReleased())

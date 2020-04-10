@@ -187,4 +187,9 @@ public class RobotConfig
     {
         return robot.get("S_LATCH");
     }
+
+    public int getTurretMotor()
+    {
+        return robot.get("M_TURRETMOTOR");
+    }
 }
