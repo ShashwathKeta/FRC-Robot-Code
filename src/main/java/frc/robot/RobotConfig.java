@@ -105,32 +105,32 @@ public class RobotConfig
 
     public int getLeftMotor1()
     {
-        return robot.get("M_LEFTMOTOR1");
+        return robot.get("M_LEFTMOTOR_A");
     }
 
     public int getLeftMotor2()
     {
-        return robot.get("M_LEFTMOTOR2");
+        return robot.get("M_LEFTMOTOR_B");
     }
 
     public int getLeftMotor3()
     {
-        return robot.get("M_LEFTMOTOR3");
+        return robot.get("M_LEFTMOTOR_C");
     }
     
     public int getRightMotor1()
     {
-        return robot.get("M_RIGHTMOTOR1");
+        return robot.get("M_RIGHTMOTOR_A");
     }
     
     public int getRightMotor2()
     {
-        return robot.get("M_RIGHTMOTOR2");
+        return robot.get("M_RIGHTMOTOR_B");
     }
 
     public int getRightMotor3()
     {
-        return robot.get("M_RIGHTMOTOR3");
+        return robot.get("M_RIGHTMOTOR_C");
     }
 
     public int getIntakeMotor()
@@ -145,12 +145,12 @@ public class RobotConfig
 
     public int getShooterMotor1()
     {
-        return robot.get("M_SHOOTERMOTOR1");
+        return robot.get("M_SHOOTERMOTOR_A");
     }
 
     public int getShooterMotor2()
     {
-        return robot.get("M_SHOOTERMOTOR2");
+        return robot.get("M_SHOOTERMOTOR_B");
     }
 
     public int getHoodMotor()
